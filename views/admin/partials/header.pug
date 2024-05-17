@@ -1,0 +1,26 @@
+header.header
+  .container-fluid
+    .row.align-items-center
+      .col-3
+        .inner-logo
+          a(href="/admin/dashboard") <i class="fa-solid fa-user-tie"></i>   ADMIN
+
+      .col-9
+        div(class="text-right")
+          a(
+            href=`${prefixAdmin}/my-account`
+            class="btn btn-primary btn-sm mr-2 name"
+          )
+            <i class="fa-solid fa-user-lock"></i> #{user.fullName}
+          a(
+            href=`/`
+            class="btn btn-danger btn-sm logout"
+            style = "margin-right: 10px"
+          ) 
+            <i class="fa-solid fa-house-user"></i> Trang client
+          a(
+            href=`${prefixAdmin}/auth/logout`
+            class="btn btn-danger btn-sm logout"
+          ) 
+            <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+        

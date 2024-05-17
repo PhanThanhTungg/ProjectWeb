@@ -1,0 +1,38 @@
+.sider
+    .inner-menu
+        ul
+            li
+                a(href=`${prefixAdmin}/dashboard`) 
+                    <i class="fa-solid fa-chart-line"></i> <span>Tổng quan</span>
+            if(role.permissions.includes("products_view"))
+                li
+                    a(href=`${prefixAdmin}/products`) 
+                        <i class="fa-solid fa-gift"></i> <span>Sản phẩm</span>
+            if(role.permissions.includes("products-category_view"))
+                li
+                    a(href=`${prefixAdmin}/products-category`) 
+                        <i class="fa-solid fa-layer-group"></i> <span>Danh mục</span>
+            if(role.permissions.includes("orders_view"))
+                li
+                    a(href=`${prefixAdmin}/orders`) 
+                        <i class="fa-solid fa-cart-shopping"></i> <span>Đơn hàng</span>
+            if(role.permissions.includes("roles_view"))
+                li
+                    a(href=`${prefixAdmin}/roles`) 
+                        <i class="fa-solid fa-address-book"></i> <span>Nhóm quyền</span>
+            if(role.permissions.includes("roles_permissions"))
+                li
+                    a(href=`${prefixAdmin}/roles/permissions`) 
+                        <i class="fa-brands fa-critical-role"></i> <span>Phân quyền</span>
+            if(role.permissions.includes("accounts_view"))
+                li
+                    a(href=`${prefixAdmin}/accounts`) 
+                        <i class="fa-solid fa-user-gear"></i> <span>Tài khoản admin</span>
+            if(role.permissions.includes("accounts_view"))
+                li
+                    a(href=`${prefixAdmin}/users`) 
+                        <i class="fa-solid fa-user-plus"></i> <span>Tài khoản client</span>
+            if(role.permissions.includes("settings_view"))
+                li
+                    a(href=`${prefixAdmin}/settings/general`) 
+                        <i class="fa-solid fa-gears"></i> <span>Cài đặt chung</span>

@@ -1,0 +1,125 @@
+extends ../../layout/default.pug
+include ../../mixins/box-head.pug
+include ../../mixins/moment.pug
+
+block main
+
+  .product-detail
+    .container.my-5
+      .row  
+        .col-xl-6.col-md-6
+          .inner-thumb
+            img(src=product.thumbnail, alt=product.title)
+        .col-xl-6.col-md-6
+          h1(class="inner-title") #{product.title}
+
+          if (product.category)
+            div(class="inner-category") 
+              span.text Danh mục: 
+              a(href=`/products/${product.category.slug}`) #{product.category.title}
+
+          if (product.priceNew)
+            div(class="inner-price-new") #{product.priceNew}$
+
+          if (product.price)
+            div(class="inner-price-old") #{product.price}$
+
+          if (product.discountPercentage)
+            div(class="inner-percent text") Giảm tới <span>#{product.discountPercentage}$</span>
+
+          if (product.stock)
+            div(class="inner-stock text") Còn lại <span>#{product.stock}</span> sản phẩm
+
+          .inner-rating.mb-3(style="color: #ccc") <i class="fa-solid fa-star"></i> #{product.ratingNumber}
+
+          form(
+            action=`/cart/add/${product.id}`
+            method="POST"
+          )
+            input(
+              class="form-control mb-2"
+              type="number"
+              name="quantity"
+              value="1"
+              min="1"
+              max=product.stock
+            )
+            button(
+              type="submit"
+              class="btn btn-success btn-block"
+            ) Thêm vào giỏ hàng
+        .col-12
+          .inner-title.text-white <b>Đánh giá</b>
+          if myToken
+            form(
+              action=`/products/detail/feedback/${product.slug}`
+              id="form-feedback"
+              method="POST"  
+            )
+              <div id="rating">
+                <input type="radio" id="star5" name="rating" value="5"/>
+                <label class = "full" for="star5" title="Awesome - 5 stars"></label>
+            
+                <input type="radio" id="star4" name="rating" value="4"/>
+                <label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+            
+                <input type="radio" id="star3" name="rating" value="3"/>
+                <label class = "full" for="star3" title="Meh - 3 stars"></label>
+            
+                <input type="radio" id="star2" name="rating" value="2"/>
+                <label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+            
+                <input type="radio" id="star1" name="rating" value="1"/>
+                <label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+              </div>
+              div(class="form-group")
+                label(for="desc" class="inner-title")
+                textarea(
+                    class="form-control"
+                    id="desc"
+                    name="description"
+                    rows="6"
+                )
+              div(class="form-group" style="margin: 0; padding-bottom:30px; display: flex; justify-content: flex-end")
+                button(
+                    type="submit"
+                    class="btn btn-primary button-1 button-feedback"
+                ) Xác nhận
+          else 
+            h2.text-white.ml-5 Đăng nhập để bình luận!
+            
+        .col-12
+          if product.feedback.length==0 
+            h2.text-white.ml-5 Chưa có bình luận! 
+          each feedback in product.feedback 
+            if feedback.userToken == myToken 
+              .wrap-feedback.mine
+                .user
+                  .avatar.mr-2
+                    img(src=feedback.thumbnail, alt="avt", width = "40px" height = "40px",style="border-radius:50%")
+                  .name.mr-4 #{feedback.fullName}
+                  .rating #{feedback.rating}/5 <i class="fa-solid fa-star"></i>
+                .time.ml-4
+                  +formatDateTime(feedback.time)
+                .comment.ml-5 #{feedback.comment}
+          hr
+          each feedback in product.feedback 
+            if feedback.userToken != myToken
+              .wrap-feedback
+                .user
+                  .avatar.mr-2 
+                    img(src=feedback.thumbnail, alt="avt", width = "40px" height = "40px",style="border-radius:50%")
+                  .name.mr-4 #{feedback.fullName}
+                  .rating #{feedback.rating}/5 <i class="fa-solid fa-star"></i>
+                .time.ml-4
+                  +formatDateTime(feedback.time)
+                .comment.ml-5 #{feedback.comment}
+              
+
+    hr
+    .container.my-5
+      .row
+        .col-12
+          +box-head("Mô tả sản phẩm")
+          .inner-desc !{product.description}
+  script(src="/js/feedback.js")

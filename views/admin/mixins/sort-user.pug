@@ -1,0 +1,19 @@
+mixin sortUser()
+    div(sort-user class="sort-user")
+        select(
+            class="form-control"
+            name="sort"
+            sort-select-user
+        )   
+            option(value="time-desc" class="option") Thời gian gần nhất - Mặc định
+            option(value="time-asc" class="option") Thời gian lâu nhất
+            option(value="totalValue-desc" class="option") Tổng giá trị giảm dần
+            option(value="totalValue-asc" class="option") Tổng giá trị tăng dần
+            option(value="cntSuccess-asc" class="option") Số đơn tăng dần
+            option(value="cntSuccess-desc" class="option") Số đơn giảm dần
+            option(value="cntFail-asc" class="option") Số đơn bom tăng dần
+            option(value="cntFail-desc" class="option") Số đơn bom giảm dần
+        button(
+            class="btn btn-danger mt-2"
+            sort-clear-user
+        ) Clear

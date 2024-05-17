@@ -1,0 +1,17 @@
+mixin form-change-multi-order(productId,optionSelected,orderId)
+    div()
+        select(
+            class="form-control"
+            name="button-status-order"
+            button-status-order
+            product-id = productId
+            optionSelected = optionSelected
+            orderId = orderId
+        )
+            option(value="xacNhan" ) Đang xác nhận
+            option(value="daXacNhan" ) Đã xác nhận
+            option(value="dangVanChuyen" ) Đang vận chuyển
+            option(value="daGiao" ) Đã giao
+            option(value="daThanhToan") Đã thanh toán
+            option(value="daHuy") Đã hủy
+            option(value="biBom") Bị bom
