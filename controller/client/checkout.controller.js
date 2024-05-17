@@ -101,7 +101,8 @@ module.exports.success = async (req, res) => {
     product.totalPrice = product.priceNew * product.quantity
     const currentStock = infoProduct.stock-product.quantity
     await Product.updateOne({_id: product.product_id},{
-      stock: currentStock
+      stock: currentStock,
+      sales: infoProduct.sales + product.quantity
     })
 
     totalPrice += product.totalPrice

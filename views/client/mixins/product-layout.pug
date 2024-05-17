@@ -34,6 +34,9 @@ mixin product-grid(products)
                                 .inner-price-new #{item.priceNew}đ
                                 .inner-price-old #{item.price}đ
                             .inner-discount -#{item.discountPercentage}%
-                            .inner-rating.mt-2 <i class="fa-solid fa-star"></i> #{item.ratingNumber}/5  
+                            .wrap(style="display: flex;align-item: center; justify-content: space-between")
+                                .inner-rating.mt-2 <i class="fa-solid fa-star"></i> #{item.ratingNumber}/5
+                                .inner-sales.m-0.mt-2 
+                                    p.m-0 Đã bán: #{item.sales}
 
             

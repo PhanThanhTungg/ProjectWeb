@@ -36,7 +36,8 @@ module.exports.index = async(req,res)=>{
 module.exports.create = async(req,res)=>{
 
     let find={
-        deleted: false
+        deleted: false,
+        status: "active"
     }
 
     const records = await ProductCategory.find(find)
@@ -94,12 +95,13 @@ module.exports.edit = async (req,res)=>{
     try {
         const find = {
             deleted: false,
+            status: "active",
             _id : req.params.id
         }
     
         const product = await ProductCategory.findOne(find)
     
-        const records = await ProductCategory.find({deleted: false})
+        const records = await ProductCategory.find({deleted: false, status: "active"})
 
         const newRecords = createTreeHelper.tree(records)
     

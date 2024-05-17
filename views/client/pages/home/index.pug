@@ -1,6 +1,7 @@
 extends ../../layout/default.pug
 include ../../mixins/box-head.pug
 include ../../mixins/product-layout.pug
+include ../../mixins/product-layout-slide.pug
 include ../../mixins/alert.pug
 include ../../mixins/sort.pug
 include ../../mixins/pagination.pug
@@ -39,11 +40,18 @@ block main
 
         .section-products-featured.my-5
             .container
+                +box-head("BEST-SELLING")
                 .row
                     .col-12
+                        #demo
+                            #indemo
+                                #demo1
+                                    +product-grid-slide(topProduct)
+                                #demo2
+                    .col-12.mt-5
                         +box-head("TRENDING")
-    
-                +product-grid(productsFeatured)
+        
+                        +product-grid(productsFeatured)
         
         .section-products-featured.my-5
             .container
@@ -56,3 +64,5 @@ block main
                 +product-grid(productsNew)
         
                 +pagination(pagination)
+    
+    script(src="/js/productSlide.js") 

@@ -49,12 +49,19 @@ module.exports.index = async (req, res) => {
         item.priceNew = (item.price * (100 - item.discountPercentage)/100).toFixed(0);
     }
 
+    let sort2 ={}
+    sort2.sales = "desc"
+    const topProduct = await Product.find({
+        status: "active",
+        deleted: false
+    }).limit(10).sort(sort2)
 
     res.render("client/pages/home/index", {
         pageTitle: "Trang chủ",
         productsFeatured : productsFeatured,
         productsNew: productsNew,
-        pagination: objectPagination
+        pagination: objectPagination,
+        topProduct: topProduct
     })
 
 

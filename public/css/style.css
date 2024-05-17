@@ -1168,3 +1168,31 @@ display: none;
 }
 
 /* end image-preview */
+
+
+
+/* productSlide */
+
+#demo {
+  overflow: hidden;
+  width: 960;
+}
+
+#demo img {
+  border: 3px solid #F2F2F2;
+}
+
+#indemo {
+  width: 3000%;
+  float: left;
+}
+
+#demo1 {
+  float: left;
+}
+
+#demo2 {
+  float: left;
+}
+
+/*end productSlide */

@@ -150,7 +150,8 @@ module.exports.deleteItem = async (req,res)=>{
 
       const currentStock = infoProduct.stock + item.quantity
       await Product.updateOne({_id: item.product_id},{
-        stock: currentStock
+        stock: currentStock,
+        sales: infoProduct.sales - item.quantity
       })
     }}
   await Order.updateOne({_id: objectId}, {products: listProduct})

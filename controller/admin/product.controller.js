@@ -198,7 +198,7 @@ module.exports.edit = async (req,res)=>{
     
         const product = await Product.findOne(find)
     
-        const category = await ProductCategory.find({deleted: false})
+        const category = await ProductCategory.find({deleted: false, status: "active"})
     
         const newCategory = createTreeHelper.tree(category)
     

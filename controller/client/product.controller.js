@@ -73,11 +73,18 @@ module.exports.detail = async (req,res)=>{
           item.fullName = user.fullName
           item.thumbnail = user.thumbnail
         }
+
+        const relatedProduct = await Product.find({
+          deleted: false,
+          product_category_id: product.product_category_id,
+          status: "active" 
+        })
         
         res.render("client/pages/products/detail.pug",{
             pageTitle: product.title,
             product: product,
-            myToken: req.cookies.tokenUser
+            myToken: req.cookies.tokenUser,
+            relatedProduct: relatedProduct
         })
     } catch (error) {
         res.redirect(`/products`) //chuyen huong den url
