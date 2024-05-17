@@ -92,6 +92,16 @@ module.exports.detail = async (req,res)=>{
 }
 
 module.exports.category = async(req, res)=>{
+  //sort
+  let sort = {}
+
+  if(req.query.sortKey && req.query.sortValue){
+      sort[req.query.sortKey] = req.query.sortValue
+  }
+  else{
+      sort.position = "desc"
+  }
+  //end sort
   const slugCategory  = req.params.slugCategory;
 
   
@@ -143,7 +153,7 @@ module.exports.category = async(req, res)=>{
   )
   //End pagigation
 
-  const products = await Product.find(find).sort({ position: "desc" }).limit(objectPagination.limit).skip(objectPagination.skip);
+  const products = await Product.find(find).sort(sort).limit(objectPagination.limit).skip(objectPagination.skip);
 
 
   for (const item of products) {
