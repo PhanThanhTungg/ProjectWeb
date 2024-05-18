@@ -79,6 +79,9 @@ module.exports.detail = async (req,res)=>{
           product_category_id: product.product_category_id,
           status: "active" 
         })
+        for (const item of relatedProduct) {
+          item.priceNew = (item.price * (100 - item.discountPercentage)/100).toFixed(0);
+      }
         
         res.render("client/pages/products/detail.pug",{
             pageTitle: product.title,

@@ -56,6 +56,10 @@ module.exports.index = async (req, res) => {
         deleted: false
     }).limit(10).sort(sort2)
 
+    for (const item of topProduct) {
+        item.priceNew = (item.price * (100 - item.discountPercentage)/100).toFixed(0);
+    }
+
     res.render("client/pages/home/index", {
         pageTitle: "Trang chủ",
         productsFeatured : productsFeatured,
