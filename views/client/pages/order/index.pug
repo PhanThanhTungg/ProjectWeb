@@ -55,7 +55,7 @@ block main
                         a(
                           href=`/products/detail/${order.productInfo.slug}`
                         ) #{order.productInfo.title}
-                      td #{order.priceNew}đ
+                      td.formatMoney #{order.priceNew}đ
                       td
                         input(
                           value=order.quantity
@@ -63,7 +63,7 @@ block main
                           item-id=order.product_id
                           style="width: 60px"
                         )
-                      td #{order.totalPrice}đ
+                      td.formatMoney #{order.totalPrice}đ
                       td 
                         +formatDateTime(order.createAt)
                       td #{order.statusDisplay}
@@ -89,3 +89,4 @@ block main
                   td(colspan="7") Chưa có sản phẩm nào!
     script(src="/js/cart.js") 
     script(src="/js/order.js")
+    script(src="/js/format.js")

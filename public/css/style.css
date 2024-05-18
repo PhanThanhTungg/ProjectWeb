@@ -243,7 +243,7 @@ padding: 10px;
     margin-bottom: 0;
     font-size: 28px;
     font-weight: 900;
-    color: gray;
+    color: rgba(255, 255, 255, 0.709);
     letter-spacing: 3px;
   }
 /* End box-head */
@@ -251,10 +251,15 @@ padding: 10px;
   /* product-item */
   .product-item {
     border: 1px solid #dddddd29;
+    box-shadow: 0 4px 4px 0 rgba(255, 254, 254, 0.2), 0 8px 20px 0 rgba(250, 249, 249, 0.19);
     border-radius: 8px;
     overflow: hidden;
     height: 100%;
     position: relative
+  }
+
+  .product-item:hover{
+    box-shadow: 0 2px 2px 0 rgba(14, 219, 219, 0.276), 0 4px 10px 0 rgba(12, 203, 203, 0.316);
   }
   
   .product-item .inner-image {
@@ -332,7 +337,7 @@ padding: 10px;
   }
 
   .product-item .inner-content .inner-title a {
-    color: gray
+    color: rgba(255, 255, 255, 0.709)
   }
   .inner-price{
     display: flex;
@@ -341,16 +346,16 @@ padding: 10px;
   }
   
   .product-item .inner-content .inner-price-new {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
-    color: #3E6C6D;
+    color: #21d7dabf;
     margin-right: 30px;
   }
   
   .product-item .inner-content .inner-price-old {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 600;
-    color: gray;
+    color: rgba(255, 255, 255, 0.709);
     text-decoration: line-through;
   }
   
@@ -367,13 +372,57 @@ padding: 10px;
     border-radius: 5px;
   }
 
+  .inner-rating{
+    color: rgba(255, 255, 255, 0.709)
+  }
   .inner-rating i{
-    color: rgba(255, 255, 0, 0.386)
+    color: rgba(180, 180, 136, 0.669)
   }
 
 
   
   /* End product-item */
+
+/* box-trending */
+.box-trending{
+  height: 600px;
+  overflow-y: scroll;
+}
+
+/* css scrollbar */
+        /* Đặt nền và kích thước chung cho scrollbar */
+        .box-trending::-webkit-scrollbar {
+          width: 7px; /* Độ rộng của scrollbar */
+          height: 12px; /* Độ cao của scrollbar ngang */
+        }
+
+        /* Tùy chỉnh phần nền của scrollbar */
+        .box-trending::-webkit-scrollbar-track {
+          background: #d6dadb; /* Màu nền của track */
+          border-radius: 10px; /* Bo tròn các góc */
+        }
+
+        /* Tùy chỉnh phần kéo (thumb) của scrollbar */
+        .box-trending::-webkit-scrollbar-thumb {
+          background: #039b8469; /* Màu của thumb */
+          border-radius: 10px; /* Bo tròn các góc */
+        }
+
+        /* Thay đổi màu thumb khi hover */
+        .box-trending::-webkit-scrollbar-thumb:hover {
+          background: #555; /* Màu của thumb khi hover */
+        }
+
+
+.wrap-trending{
+  background-color: rgba(136, 131, 131, 0.165);
+  padding: 50px 0;
+  padding-top: 10px
+}
+
+/* end-box-trending */
+
+  
 
 /* product-detail */
 .product-detail{

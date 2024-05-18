@@ -48,16 +48,17 @@ block main
                                 #demo1
                                     +product-grid-slide(topProduct)
                                 #demo2
-                    .col-12.mt-5
-                        +box-head("TRENDING")
-        
-                        +product-grid(productsFeatured)
+        .section-products-featured.my-5.wrap-trending
+            .container
+                +box-head("TRENDING")
+            .container.box-trending
+                +product-grid(productsFeatured)
         
         .section-products-featured.my-5
             .container
                 .row
                     .col-6
-                        +box-head("NEW")
+                        +box-head("ALL PRODUCTS")
                     .col-6
                         +sort()
 
@@ -66,3 +67,4 @@ block main
                 +pagination(pagination)
     
     script(src="/js/productSlide.js") 
+    script(src="/js/format.js") 

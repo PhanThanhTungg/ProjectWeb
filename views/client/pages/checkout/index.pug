@@ -30,9 +30,9 @@ block main
                       width="80px"
                     )
                   td #{item.productInfo.title}
-                  td #{item.productInfo.priceNew}đ
+                  td.formatMoney #{item.productInfo.priceNew}đ
                   td #{item.quantity}
-                  td #{item.totalPrice}đ
+                  td.formatMoney #{item.totalPrice}đ
             else
               tr
                 td(
@@ -40,7 +40,7 @@ block main
                   class="text-center"
                 ) Giỏ hàng trống.
         if(cartDetail.products.length > 0)
-          h3(class="text-right table-cart") Tổng đơn hàng: #{cartDetail.totalPrice}đ
+          h3(class="text-right table-cart") Tổng đơn hàng: <span class="formatMoney"> #{cartDetail.totalPrice} </span> 
 
 
     if(cartDetail.products.length > 0)
@@ -83,3 +83,5 @@ block main
                   type="submit"
                   class="btn btn-success btn-block thanhToan"
                 ) ĐẶT HÀNG
+  
+  script(src="/js/format.js") 

@@ -20,10 +20,10 @@ block main
               a(href=`/products/${product.category.slug}`) #{product.category.title}
 
           if (product.priceNew)
-            div(class="inner-price-new") #{product.priceNew} đ
+            div(class="inner-price-new formatMoney") #{product.priceNew} đ
 
           if (product.price)
-            div(class="inner-price-old") #{product.price} đ
+            div(class="inner-price-old formatMoney") #{product.price} đ
 
           if (product.discountPercentage)
             div(class="inner-percent text") Giảm tới <span>#{product.discountPercentage} %</span>
@@ -105,6 +105,8 @@ block main
                 .time.ml-4
                   +formatDateTime(feedback.time)
                 .comment.ml-5 #{feedback.comment}
+              .wrap-hr(style="display: flex; align-item: center; justify-content: center")
+                hr.m-0(style="height: 0.5px; background-color: #158b8d; width: 95%")
           hr
           each feedback in product.feedback 
             if feedback.userToken != myToken
@@ -117,6 +119,9 @@ block main
                 .time.ml-4
                   +formatDateTime(feedback.time)
                 .comment.ml-5 #{feedback.comment}
+            
+                .wrap-hr(style="display: flex; align-item: center; justify-content: center")
+                  hr.m-0.mt-3(style="height: 0.5px; background-color: #158b8d; width: 99%")
               
 
     hr
@@ -131,8 +136,9 @@ block main
                   #demo1
                     +product-grid-slide(relatedProduct)
                   #demo2
-        .col-12
+        .col-12.mt-5
           +box-head("Mô tả sản phẩm")
           .inner-desc !{product.description}
   script(src="/js/feedback.js")
   script(src="/js/productSlide.js") 
+  script(src="/js/format.js") 

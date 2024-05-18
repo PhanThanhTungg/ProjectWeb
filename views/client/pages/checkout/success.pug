@@ -53,10 +53,12 @@ block main
                           width="80px"
                         )
                       td #{item.title}
-                      td #{item.price}$
+                      td.formatMoney #{item.price} 
                       td #{item.quantity}
-                      td #{item.totalPrice}$
+                      td.formatMoney #{item.totalPrice} 
 
 
             if(order.products.length > 0)
-              h3(class="text-right table-cart") Tổng đơn hàng: #{order.totalPrice}$
+              h3(class="text-right table-cart") Tổng đơn hàng: <span class="formatMoney"> #{order.totalPrice} </span>  
+  
+  script(src="/js/format.js") 
